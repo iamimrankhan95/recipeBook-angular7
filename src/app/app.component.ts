@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularProject';
+  showRecipe:boolean=true;
+  constructor(){
+
+  }
+
+  navicate(serverData: {showRecipe:boolean}){
+    this.showRecipe=serverData.showRecipe;
+  }
+  
 }
