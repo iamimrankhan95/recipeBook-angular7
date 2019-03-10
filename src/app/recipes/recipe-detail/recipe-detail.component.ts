@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
+import { ShoppingListService } from 'src/app/shared/services/shopping-list.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,7 +10,7 @@ import { RecipeService } from 'src/app/shared/services/recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe:Recipe;
-  constructor(private recipeService:RecipeService) { 
+  constructor(private recipeService:RecipeService,private shoppingListService:ShoppingListService) { 
     
     // this.recipeService.recipeSelected.subscribe(
     //   (recipe: Recipe) => alert('New Status: ' + recipe)
@@ -19,4 +20,7 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  addToShoppingList(){
+    this.shoppingListService.addListToIngredientList(this.recipe.ingredients);
+  }
 }
