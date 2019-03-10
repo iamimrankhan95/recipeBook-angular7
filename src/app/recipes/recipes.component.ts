@@ -10,10 +10,11 @@ import { RecipeService } from '../shared/services/recipe.service';
 export class RecipesComponent implements OnInit {
   recipe:Recipe;
   constructor(private recipeService:RecipeService) { 
-    this.recipeService.recipeSelected.subscribe((recipe: Recipe) => this.recipe=recipe);
+    
   }
 
   ngOnInit() {
+    this.recipeService.recipeSelected.subscribe((recipe: Recipe) =>{this.recipe=recipe} ); //ES6 arrow function
   }
   // rcvRecipe(recivedRecipe:Recipe){
   //   this.recipe=recivedRecipe;

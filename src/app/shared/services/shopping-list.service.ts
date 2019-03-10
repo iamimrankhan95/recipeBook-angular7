@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Ingredient } from '../Models/ingredient.model';
 
 @Injectable({
@@ -9,10 +9,17 @@ export class ShoppingListService {
     new Ingredient('Apples',5),
     new Ingredient('Tomatoes',10)
   ];
+  //ingredientToAdd=new EventEmitter<Ingredient>();
+  ingredientChanged=new EventEmitter<Ingredient[]>(); // will work like push notification. whenever list is updated it will emit the list, and the concerned components will listen for it.
   constructor() { 
-
   }
   getRecipes(){
-    return this.ingredients.slice();
+    return this.ingredients.slice(); 
+  }
+
+  addToIngredientList(ingredient:Ingredient){
+    //this.ingredients.slice().push(ingredient);
+    this.ingredients.push(ingredient);
+    this.ingredientChanged.emit(this.ingredients.slice());
   }
 }
