@@ -6,13 +6,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() showRecipe = new EventEmitter<{showRecipe: boolean}>();
+  //@Output() showRecipe = new EventEmitter<{showRecipe: boolean}>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  navicate(flag:boolean){
-    this.showRecipe.emit({showRecipe:flag});
-  }
+  // navicate(flag:boolean){
+  //   this.showRecipe.emit({showRecipe:flag});
+  // }
 }
