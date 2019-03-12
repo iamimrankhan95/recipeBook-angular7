@@ -21,6 +21,6 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   addToShoppingList(){
-    this.shoppingListService.addListToIngredientList(this.recipe.ingredients);
+    this.recipeService.addIngredientList(this.recipe.ingredients);
   }
 }

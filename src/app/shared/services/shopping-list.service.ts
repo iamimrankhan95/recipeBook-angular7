@@ -22,11 +22,14 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
     this.ingredientChanged.emit(this.ingredients.slice());
   }
-  addListToIngredientList(ingredients:Ingredient[]){
+
+  addIngredientList(ingredients:Ingredient[]){
     this.ingredients.push(...ingredients);
-  //   var unique = this.ingredients.filter(function(elem, index, self) {
-  //     return index === self.indexOf(elem);
-  // })
+    //for unique item in list
+    /*
+    var unique = this.ingredients.filter(function(elem, index, self) {
+      return index === self.indexOf(elem);
+    })*/
     this.ingredientChanged.emit(this.ingredients.slice());
   }
 }
