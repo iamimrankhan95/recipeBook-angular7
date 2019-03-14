@@ -1,6 +1,16 @@
-<a href="#" 
+<!--<a 
+[routerLink]="['recipedetails', recipe.id]"
+        [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"
+        fragment="loading"
+style="cursor: pointer;" 
 class="list-group-item clearfix"
 (click)="selectRecipe()"
+>-->
+<a 
+[routerLink]="[recipe.id]"
+style="cursor: pointer;" 
+class="list-group-item clearfix"
+routerLinkActive="active"
 >
 
   <div class="pull-left">

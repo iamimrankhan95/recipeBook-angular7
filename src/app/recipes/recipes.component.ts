@@ -19,4 +19,5 @@ export class RecipesComponent implements OnInit {
   // rcvRecipe(recivedRecipe:Recipe){
   //   this.recipe=recivedRecipe;
   // }
+  
 }
