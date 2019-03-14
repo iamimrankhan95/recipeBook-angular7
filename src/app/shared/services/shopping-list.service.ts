@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Ingredient } from '../Models/ingredient.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +11,17 @@ export class ShoppingListService {
     new Ingredient('Tomatoes',10)
   ];
   //ingredientToAdd=new EventEmitter<Ingredient>();
-  ingredientChanged=new EventEmitter<Ingredient[]>(); // will work like push notification. whenever list is updated it will emit the list, and the concerned components will listen for it.
+  ingredientChanged=new Subject<Ingredient[]>(); // will work like push notification. whenever list is updated it will emit the list, and the concerned components will listen for it.
   constructor() { 
   }
-  getRecipes(){
+  getIngredients(){
     return this.ingredients.slice(); 
   }
 
   addToIngredientList(ingredient:Ingredient){
     //this.ingredients.slice().push(ingredient);
     this.ingredients.push(ingredient);
-    this.ingredientChanged.emit(this.ingredients.slice());
+    this.ingredientChanged.next(this.ingredients.slice());
   }
 
   addIngredientList(ingredients:Ingredient[]){
@@ -30,6 +31,6 @@ export class ShoppingListService {
     var unique = this.ingredients.filter(function(elem, index, self) {
       return index === self.indexOf(elem);
     })*/
-    this.ingredientChanged.emit(this.ingredients.slice());
+    this.ingredientChanged.next(this.ingredients.slice());
   }
 }

@@ -30,7 +30,7 @@ export class RecipeService {
       new Ingredient('tomatoes',2)
     ])
   ];
-  recipeSelected=new EventEmitter<Recipe>();
+  // recipeSelected=new EventEmitter<Recipe>(); // replaced with routing
   constructor(private shoppingListService:ShoppingListService) { }
 
   getRecipes(){

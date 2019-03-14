@@ -10,7 +10,8 @@ import { Route, Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-  @Input() recipe:Recipe;
+  // @Input() recipe:Recipe; no more manual interaction
+  recipe:Recipe;
   constructor(private recipeService:RecipeService,
     private shoppingListService:ShoppingListService,
     private route:ActivatedRoute,
