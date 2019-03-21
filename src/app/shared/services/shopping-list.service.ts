@@ -10,8 +10,8 @@ export class ShoppingListService {
     new Ingredient('Apples',5),
     new Ingredient('Tomatoes',10)
   ];
-  //ingredientToAdd=new EventEmitter<Ingredient>();
   ingredientChanged=new Subject<Ingredient[]>(); // will work like push notification. whenever list is updated it will emit the list, and the concerned components will listen for it.
+  emitIndexForEditIngredient=new Subject<number>();
   constructor() { 
   }
   getIngredients(){
@@ -19,7 +19,6 @@ export class ShoppingListService {
   }
 
   addToIngredientList(ingredient:Ingredient){
-    //this.ingredients.slice().push(ingredient);
     this.ingredients.push(ingredient);
     this.ingredientChanged.next(this.ingredients.slice());
   }
@@ -31,6 +30,13 @@ export class ShoppingListService {
     var unique = this.ingredients.filter(function(elem, index, self) {
       return index === self.indexOf(elem);
     })*/
+    this.ingredientChanged.next(this.ingredients.slice());
+  }
+  getIngredient(index:number){
+    return this.ingredients[index];
+  }
+  editIngredient(index:number ,ingredient:Ingredient){
+    this.ingredients[index]=ingredient;
     this.ingredientChanged.next(this.ingredients.slice());
   }
 }

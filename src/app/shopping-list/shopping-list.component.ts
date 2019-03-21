@@ -8,32 +8,35 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit, OnDestroy{
-  
-  ingredients:Ingredient[];
-  subcription:Subscription
+export class ShoppingListComponent implements OnInit, OnDestroy {
+
+  ingredients: Ingredient[];
+  subcription: Subscription
   // ingredients:Ingredient[]=[
   //   new Ingredient('Apples',5),
   //   new Ingredient('Tomatoes',10)
   // ];
-  constructor(private shoppingListService:ShoppingListService) { 
+  constructor(private shoppingListService: ShoppingListService) {
     //console.log('this is constructor')
   }
 
   ngOnInit() {
     //console.log('this is ngOninit')
-    this.ingredients=this.shoppingListService.getIngredients();
-    this.subcription=this.shoppingListService.ingredientChanged.subscribe(
-      (ingredients:Ingredient[])=>{
-        this.ingredients=ingredients;
+    this.ingredients = this.shoppingListService.getIngredients();
+    this.subcription = this.shoppingListService.ingredientChanged.subscribe(
+      (ingredients: Ingredient[]) => {
+        this.ingredients = ingredients;
       }
     )
-    
+
   }
-  addIngredientToArr(ingredient:Ingredient){
-    
+  addIngredientToArr(ingredient: Ingredient) {
+
   }
   ngOnDestroy(): void {
     this.subcription.unsubscribe();
+  }
+  selectIndexForEdit(indexForEdit: number) {
+    this.shoppingListService.emitIndexForEditIngredient.next(indexForEdit);
   }
 }
