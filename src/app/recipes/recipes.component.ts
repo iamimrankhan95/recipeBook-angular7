@@ -14,22 +14,7 @@ export class RecipesComponent implements OnInit {
   }
 
   ngOnInit() {
-    //not using anymore, we have done this component interaction with route
-    /*
-    this.recipeService.recipeSelected.subscribe(
-        (recipe: Recipe) =>{
-          this.recipe=recipe
-        } 
-      ); //ES6 arrow function
-    */
-    
+
   }
-  //manual interaction with component
-  /*
-   rcvRecipe(recivedRecipe:Recipe){
-    this.recipe=recivedRecipe;
-  }
-   */
-  
-  
+
 }

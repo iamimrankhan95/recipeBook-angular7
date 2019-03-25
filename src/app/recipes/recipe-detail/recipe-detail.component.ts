@@ -16,12 +16,7 @@ export class RecipeDetailComponent implements OnInit {
     private shoppingListService:ShoppingListService,
     private route:ActivatedRoute,
     private router:Router
-    ) { 
-    
-    // this.recipeService.recipeSelected.subscribe(
-    //   (recipe: Recipe) => alert('New Status: ' + recipe)
-    // );
-  }
+    ) {}
 
   ngOnInit() {
     this.route.params
