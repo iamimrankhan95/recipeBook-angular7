@@ -2,11 +2,13 @@ import { Injectable,EventEmitter } from '@angular/core';
 import { Recipe } from 'src/app/recipes/recipe.model';
 import { Ingredient } from '../models/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
+  
   private recipes:Recipe[]=[
     new Recipe(1,'Beef Burger','this is simply a Beef Burger','https://bluewater.co.uk/sites/bluewater/files/styles/image_spotlight_large/public/images/spotlights/burger-cropped.jpg?itok=SeFYMFP6',[
       new Ingredient('bun',2),
@@ -31,6 +33,7 @@ export class RecipeService {
     ])
   ];
   // recipeSelected=new EventEmitter<Recipe>(); // replaced with routing
+  recipeChanges=new Subject<Recipe[]>();
   constructor(private shoppingListService:ShoppingListService) { }
 
   getRecipes(){
@@ -39,13 +42,20 @@ export class RecipeService {
   addIngredientList(ingredients:Ingredient[]){
     this.shoppingListService.addIngredientList(ingredients);
   }
-  getRecipeById(id:number){
-    let selectedRecipe: Recipe =this.recipes.find(x=>x.id==id);
-    if(selectedRecipe!==undefined){
-      return selectedRecipe;
-    }else{
-      return null;
-    }
+  getRecipeByIndex(index:number){
+    return this.recipes[index];    
+  }
+  addRecipe(newRecipe:Recipe){
+    this.recipes.push(newRecipe);
+    this.recipeChanges.next(this.recipes.slice());
+  }
+  updateRecipe(index:number,newRecipe:Recipe){
     
+    this.recipes[index]=newRecipe;
+    this.recipeChanges.next(this.recipes.slice());
+  }
+  deleteRecipe(recipeIndex: number): any {
+    this.recipes.splice(recipeIndex,1);
+    this.recipeChanges.next(this.recipes.slice());
   }
 }

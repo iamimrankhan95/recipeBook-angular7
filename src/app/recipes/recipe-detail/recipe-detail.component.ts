@@ -12,6 +12,7 @@ import { Route, Router, ActivatedRoute, Params } from '@angular/router';
 export class RecipeDetailComponent implements OnInit {
   // @Input() recipe:Recipe; no more manual interaction
   recipe:Recipe;
+  recipeIndex:number;
   constructor(private recipeService:RecipeService,
     private shoppingListService:ShoppingListService,
     private route:ActivatedRoute,
@@ -22,7 +23,8 @@ export class RecipeDetailComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.recipe = this.recipeService.getRecipeById(+params['id']);                 
+          this.recipeIndex=+params['id'];
+          this.recipe = this.recipeService.getRecipeByIndex(this.recipeIndex);                 
         }
       );
     
@@ -31,8 +33,13 @@ export class RecipeDetailComponent implements OnInit {
   addToShoppingList(){
     this.recipeService.addIngredientList(this.recipe.ingredients);
   }
+  //not need
   goto(){
     //alert(this.route);
     this.router.navigate(['../../act'],{relativeTo:this.route});
+  }
+  deleteRecipe(){
+    this.recipeService.deleteRecipe(this.recipeIndex);
+    this.router.navigate(['/recipes']);
   }
 }
