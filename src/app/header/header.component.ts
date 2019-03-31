@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataStorageService } from '../shared/services/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,18 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  //@Output() showRecipe = new EventEmitter<{showRecipe: boolean}>();
-  constructor() { }
+  constructor(private dataStorageService:DataStorageService) { }
 
   ngOnInit() {
   }
-
-  // navicate(flag:boolean){
-  //   this.showRecipe.emit({showRecipe:flag});
-  // }
+  saveRecipes(){
+    this.dataStorageService.storeRecipe().subscribe(
+      (response:Response)=>{
+        console.log(response)
+      }
+    )
+  }
+  retriveRecipes(){
+    this.dataStorageService.retriveRecipe();
+  }
 }
