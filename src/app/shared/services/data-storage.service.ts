@@ -12,7 +12,7 @@ export class DataStorageService{
     retriveRecipe(){
         return this.http.get<Recipe[]>('https://ng-recipe-book-a48f4.firebaseio.com/recipe.json')
         .pipe(
-            map(
+            map( // is for format the data
                 (recipes:Recipe[])=>{
                     for(let recipe of recipes){
                         if(!recipe.ingredients){
