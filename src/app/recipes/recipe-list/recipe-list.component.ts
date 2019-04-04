@@ -9,22 +9,22 @@ import { Subscription } from 'rxjs';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit,OnDestroy {
-  recipes:Recipe[]=[];
-  subscription:Subscription;
-  constructor(private recipeService:RecipeService,private router:Router,private route:ActivatedRoute) { }
+export class RecipeListComponent implements OnInit, OnDestroy {
+  recipes: Recipe[] = [];
+  subscription: Subscription;
+  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription=this.recipeService.recipeChanges.subscribe(
-      (recipes:Recipe[])=>{
-        this.recipes=recipes;
-    })
-    this.recipes=this.recipeService.getRecipes();
+    this.subscription = this.recipeService.recipeChanges.subscribe(
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+      })
+    this.recipes = this.recipeService.getRecipes();
   }
-  onNewRecipe(){
-    this.router.navigate(['new'],{relativeTo:this.route});
+  onNewRecipe() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
-  ngOnDestroy(){
-this.subscription.unsubscribe();
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
