@@ -12,7 +12,6 @@ import { ShoppingEditComponent } from '../shopping-list/shopping-edit/shopping-e
   ],
   imports: [
     FormsModule,
-    HttpClientModule,
     SharedModule
   ]
 })

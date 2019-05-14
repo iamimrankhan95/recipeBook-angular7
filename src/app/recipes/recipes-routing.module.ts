@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipesComponent } from './recipes.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
@@ -21,7 +20,6 @@ const recipesRoutes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     RouterModule.forChild(recipesRoutes)
   ],
   exports: [RouterModule]
