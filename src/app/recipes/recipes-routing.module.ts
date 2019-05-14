@@ -7,7 +7,7 @@ import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { AuthGuardService } from '../auth/auth-guard.service';
 
-const appRoutes: Routes = [
+const recipeRoutes: Routes = [
   { path: "", redirectTo: '/recipes', pathMatch: "full" },//==='/'
   {
     path: 'recipes', component: RecipesComponent, children: [
@@ -22,8 +22,8 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(recipeRoutes)
   ],
   exports: [RouterModule]
 })
-export class RecipeRoutingModule { }
+export class RecipesRoutingModule { }
