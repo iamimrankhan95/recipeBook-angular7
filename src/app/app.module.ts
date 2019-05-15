@@ -25,7 +25,6 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RecipesModule,
     ShoppingModule,
     AuthModule,
     SharedModule
