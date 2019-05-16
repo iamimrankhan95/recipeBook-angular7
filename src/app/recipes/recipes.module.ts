@@ -8,6 +8,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuardService } from '../auth/auth-guard.service';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
         ReactiveFormsModule,
         RecipesRoutingModule,
         SharedModule
-    ]
+    ],exports:[],
+    providers:[AuthGuardService]
 })
 export class RecipesModule {
 
