@@ -50,7 +50,6 @@ export class RecipeService {
     this.recipeChanges.next(this.recipes.slice());
   }
   updateRecipe(index:number,newRecipe:Recipe){
-    
     this.recipes[index]=newRecipe;
     this.recipeChanges.next(this.recipes.slice());
   }
