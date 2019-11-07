@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ShoppingModule } from './shopping-list/shopping.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
-
+//https://medium.com/@cyrilletuzi/understanding-angular-modules-ngmodule-and-their-scopes-81e4ed6f7407
 @NgModule({
   declarations: [
     AppComponent
